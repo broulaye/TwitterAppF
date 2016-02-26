@@ -29,7 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window?.rootViewController = vc
 
         }
-        
+        /*
+        let vc = storyboard.instantiateViewControllerWithIdentifier("MyNavigationController")
+            as! UINavigationController
+        window?.rootViewController = vc
+        */
         return true
     }
 
