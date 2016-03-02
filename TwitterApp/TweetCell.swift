@@ -143,54 +143,14 @@ class TweetCell: UITableViewCell {
         
     }
     
-    @IBAction func favorite(sender: AnyObject) {
-        TwitterClient.sharedInstance.favorites(tweetID)
-        self.reloadInputViews()
-        if(favorited == false) {
-            favorited = true
-            
-            if let image = UIImage(named: "like-action-on") {
-                favoriteButton.setImage(image, forState: .Normal)
-            }
-            tweet.favoritesCount = tweet.favoritesCount + 1
-            if(tweet.favoritesCount >= 1000000) {
-                favoriteCountLabel.text = "\(tweet.favoritesCount/1000000)M"
-            }
-            else if(tweet.favoritesCount >= 1000) {
-                favoriteCountLabel.text = "\(tweet.favoritesCount/1000)K"
-            } else {
-                favoriteCountLabel.text = "\(tweet.favoritesCount)"
-            }
-        
-        }
-        else {
-            favorited = false
-            
-            if let image = UIImage(named: "like-action") {
-                favoriteButton.setImage(image, forState: .Normal)
-            }
-            tweet.favoritesCount = tweet.favoritesCount - 1
-            if(tweet.favoritesCount >= 1000000) {
-                favoriteCountLabel.text = "\(tweet.favoritesCount/1000000)M"
-            }
-            else if(tweet.favoritesCount >= 1000) {
-                favoriteCountLabel.text = "\(tweet.favoritesCount/1000)K"
-            } else {
-                favoriteCountLabel.text = "\(tweet.favoritesCount)"
-            }
-
-        
-        }
-    }
     
-
     
     @IBAction func retweetButtonClicked(sender: AnyObject)
         {
         
-            TwitterClient.sharedInstance.retweet(tweetID)
-            self.reloadInputViews()
+            
             if(retweeted == false){
+                TwitterClient.sharedInstance.retweet(tweetID)
                 retweeted = true
                 if let image = UIImage(named: "retweet-action-on") {
                     retweetButton.setImage(image, forState: .Normal)
@@ -208,6 +168,7 @@ class TweetCell: UITableViewCell {
                 
             }
             else {
+                TwitterClient.sharedInstance.unretweet(tweetID)
                 retweeted = false
                 if let image = UIImage(named: "retweet-action") {
                     retweetButton.setImage(image, forState: .Normal)
@@ -230,9 +191,9 @@ class TweetCell: UITableViewCell {
     @IBAction func favoriteButtonClicked(sender: AnyObject)
     {
         
-        TwitterClient.sharedInstance.favorites(tweetID)
-        self.reloadInputViews()
+        
         if(favorited == false) {
+            TwitterClient.sharedInstance.favorites(tweetID)
             favorited = true
             if let image = UIImage(named: "like-action-on") {
                 favoriteButton.setImage(image, forState: .Normal)
@@ -249,6 +210,7 @@ class TweetCell: UITableViewCell {
             
         }
         else {
+            TwitterClient.sharedInstance.unfavorite(tweetID)
             favorited = false
             if let image = UIImage(named: "like-action") {
                 favoriteButton.setImage(image, forState: .Normal)
@@ -270,8 +232,7 @@ class TweetCell: UITableViewCell {
     
     
     
-    @IBAction func onReply(sender: AnyObject) {
-    }
+
     
     @IBOutlet weak var retweetCountLabel: UILabel!
     

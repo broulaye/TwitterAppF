@@ -95,6 +95,9 @@
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxl-5Y-Xml">
                                                     <rect key="frame" x="221" y="84" width="27" height="36"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" image="like-action"/>
                                                     <connections>
                                                         <action selector="favoriteButtonClicked:" destination="eh5-Lq-6rq" eventType="touchUpInside" id="edF-QD-Wb0"/>
@@ -102,6 +105,9 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQp-1t-iHB">
                                                     <rect key="frame" x="128" y="87" width="24" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" image="retweet-action"/>
                                                     <connections>
                                                         <action selector="retweetButtonClicked:" destination="eh5-Lq-6rq" eventType="touchUpInside" id="7rK-tt-n8F"/>
@@ -127,6 +133,9 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqG-5Z-urr">
                                                     <rect key="frame" x="63" y="86" width="32" height="27"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                    </accessibility>
                                                     <state key="normal" image="reply-action_0 (1)"/>
                                                 </button>
                                             </subviews>
@@ -142,7 +151,7 @@
                                             <outlet property="tagLabel" destination="qmN-vL-8gm" id="44P-Tk-Gdu"/>
                                             <outlet property="timeLabel" destination="OdX-Z2-zhx" id="fn9-Cf-75T"/>
                                             <outlet property="tweetLabel" destination="V7y-WJ-rG9" id="Xyq-iH-BOP"/>
-                                            <segue destination="0DY-w8-5G9" kind="push" id="nbn-Zw-0F8"/>
+                                            <segue destination="0DY-w8-5G9" kind="push" id="YB9-fq-LpP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -172,10 +181,10 @@
             </objects>
             <point key="canvasLocation" x="1289" y="362"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="kAB-0a-rXW">
             <objects>
-                <viewController id="LHD-qS-21O" sceneMemberID="viewController">
+                <viewController id="LHD-qS-21O" customClass="ProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Iv-1w-jq5"/>
                         <viewControllerLayoutGuide type="bottom" id="s6g-YN-OHC"/>
@@ -192,10 +201,10 @@
             </objects>
             <point key="canvasLocation" x="1469" y="984"/>
         </scene>
-        <!--View Controller-->
+        <!--Twitter Detail View Controller-->
         <scene sceneID="fGO-2e-7vC">
             <objects>
-                <viewController id="0DY-w8-5G9" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TwitterDetailViewController" id="0DY-w8-5G9" customClass="TwitterDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DGt-Mz-rlJ"/>
                         <viewControllerLayoutGuide type="bottom" id="Wyk-vB-PNr"/>
@@ -220,13 +229,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlI-RC-rob">
-                                <rect key="frame" x="0.0" y="123" width="320" height="155"/>
+                                <rect key="frame" x="0.0" y="123" width="320" height="150"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3R-YZ-kEL">
-                                <rect key="frame" x="8" y="276" width="305" height="2"/>
+                                <rect key="frame" x="8" y="276" width="305" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="26 RETWEETS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8D-QO-t5n">
@@ -242,30 +251,50 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Us-Ef-Kdu">
-                                <rect key="frame" x="8" y="295" width="305" height="2"/>
+                                <rect key="frame" x="8" y="295" width="305" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yuv-T4-Xpg">
-                                <rect key="frame" x="0.0" y="340" width="320" height="2"/>
+                                <rect key="frame" x="0.0" y="340" width="320" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjr-Dh-4Dz">
-                                <rect key="frame" x="33" y="305" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ny-LH-jxs">
+                                <rect key="frame" x="112" y="302" width="45" height="36"/>
+                                <state key="normal" title="Button" image="retweet-action"/>
+                                <connections>
+                                    <action selector="onRetweet:" destination="0DY-w8-5G9" eventType="touchUpInside" id="Io3-up-hbf"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ny-LH-jxs">
-                                <rect key="frame" x="111" y="305" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QlD-pz-jIf">
+                                <rect key="frame" x="188" y="302" width="30" height="36"/>
+                                <state key="normal" title="Button" image="like-action"/>
+                                <connections>
+                                    <action selector="onLike:" destination="0DY-w8-5G9" eventType="touchUpInside" id="Eog-dY-DeQ"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QlD-pz-jIf">
-                                <rect key="frame" x="184" y="305" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjr-Dh-4Dz">
+                                <rect key="frame" x="41" y="302" width="36" height="36"/>
+                                <state key="normal" title="Button" image="reply-action_0 (1)"/>
+                                <connections>
+                                    <action selector="onReply:" destination="0DY-w8-5G9" eventType="touchUpInside" id="aoa-ve-RpI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="5YH-Gv-u4R"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="likeButton" destination="QlD-pz-jIf" id="7wG-bq-8ZI"/>
+                        <outlet property="nameLabel" destination="vi9-2I-isp" id="CFv-rr-L90"/>
+                        <outlet property="profilePic" destination="n5X-du-UXI" id="2S9-yn-hrt"/>
+                        <outlet property="replyButton" destination="hjr-Dh-4Dz" id="BhE-sN-Hee"/>
+                        <outlet property="retweetButton" destination="3Ny-LH-jxs" id="qCD-4V-i4F"/>
+                        <outlet property="tagLabel" destination="s9t-uj-8gV" id="1nq-lR-PIG"/>
+                        <outlet property="tweetCountLabel" destination="R8D-QO-t5n" id="9sf-gz-jg2"/>
+                        <outlet property="tweetLabel" destination="VlI-RC-rob" id="G29-E7-nuu"/>
+                        <outlet property="tweetLikeLabel" destination="1L7-Bx-hRZ" id="i06-R3-Zxh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKp-CE-FjN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

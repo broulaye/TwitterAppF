@@ -103,9 +103,25 @@ class TwitterClient: BDBOAuth1SessionManager {
         }
     }
     
+    func unretweet(id: String) {
+        POST("1.1/statuses/unretweet/\(id).json", parameters: nil, progress: nil, success: { (operation:NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            print("unretweet")
+            }) { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("\(error.localizedDescription)")
+        }
+    }
+    
     func favorites(id: String) {
         POST("1.1/favorites/create.json?id=\(id)", parameters: nil, progress: nil, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
             print("favorited")
+            }) { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
+                print("\(error.localizedDescription)")
+        }
+    }
+    
+    func unfavorite(id: String) {
+        POST("1.1/favorites/destroy.json?id=\(id)", parameters: nil, progress: nil, success: { (operation: NSURLSessionDataTask!, response: AnyObject?) -> Void in
+            print("unfavorited")
             }) { (operation: NSURLSessionDataTask?, error: NSError!) -> Void in
                 print("\(error.localizedDescription)")
         }
